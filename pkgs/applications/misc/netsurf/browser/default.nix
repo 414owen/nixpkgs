@@ -12,11 +12,12 @@
 # uilib-specific dependencies
 
 , gtk2 # GTK 2
+, gtk3 # GTK 3
 , SDL  # Framebuffer
 
 # Configuration
 
-, uilib ? "framebuffer"
+, uilib ? "gtk3"
 
 # Netsurf-specific dependencies
 
@@ -27,25 +28,17 @@
 
 let
   inherit (stdenv.lib) optional optionals;
+  isGtk = uilib == "gtk2" || uilib == "gtk3";
 in
 stdenv.mkDerivation rec {
 
   pname = "netsurf";
-  version = "3.9";
+  version = "3.10";
 
   src = fetchurl {
     url = "http://download.netsurf-browser.org/netsurf/releases/source/netsurf-${version}-src.tar.gz";
-    sha256 = "1hzcm2s2wh5sapgr000lg63hcdbj6hyajxl43xa1x80kc5piqbyp";
+    sha256 = "0plra64c5xyiw12yx2q13brxsv8apmany97zqa2lcqckw4ll8j1n";
   };
-
-  patches = [
-    # GTK: prefer using curl's intrinsic defaults for CURLOPT_CA*
-    (fetchpatch {
-	  name = "0001-GTK-prefer-using-curl-s-intrinsic-defaults-for-CURLO.patch";
-      url = "http://source.netsurf-browser.org/netsurf.git/patch/?id=87177d8aa109206d131e0d80a2080ce55dab01c7";
-      sha256 = "08bc60pc5k5qpckqv21zgmgszj3rpwskfc84shs8vg92vkimv2ai";
-    })
-  ];
 
   nativeBuildInputs = [
     makeWrapper
@@ -54,7 +47,7 @@ stdenv.mkDerivation rec {
     pkgconfig
     xxd
   ]
-  ++ optional (uilib == "gtk") wrapGAppsHook
+  ++ optional isGtk wrapGAppsHook
   ;
 
   buildInputs = [ 
@@ -65,7 +58,8 @@ stdenv.mkDerivation rec {
     libutf8proc
   ]
   ++ optionals (uilib == "framebuffer") [ expat SDL ]
-  ++ optional (uilib == "gtk") gtk2
+  ++ optional (uilib == "gtk2") gtk2
+  ++ optional (uilib == "gtk3") gtk3
   ;
 
   preConfigure = ''
