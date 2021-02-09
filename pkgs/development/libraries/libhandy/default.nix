@@ -23,14 +23,14 @@
 
 stdenv.mkDerivation rec {
   pname = "libhandy";
-  version = "1.0.3";
+  version = "1.1.0";
 
   outputs = [ "out" "dev" "devdoc" "glade" ];
   outputBin = "dev";
 
-  src = fetchurl {
-    url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
-    sha256 = "sha256-VZuzrMLDYkiJF+ty7SW9wYH0riaslNF3Y0zF00yGf3o=";
+  src = builtins.fetchGit {
+    url = "https://gitlab.gnome.org/GNOME/libhandy.git";
+    rev = "74827c325abca6e436657c34d04a609d6728d10d";
   };
 
   nativeBuildInputs = [

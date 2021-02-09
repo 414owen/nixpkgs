@@ -21,6 +21,7 @@
 , libxkbcommon
 , epoxy
 , at-spi2-core
+, libmanette
 , libxml2
 , libsoup
 , libsecret
@@ -59,7 +60,7 @@ with lib;
 
 stdenv.mkDerivation rec {
   pname = "webkitgtk";
-  version = "2.30.3";
+  version = "2.31.1";
 
   outputs = [ "out" "dev" ];
 
@@ -67,7 +68,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://webkitgtk.org/releases/${pname}-${version}.tar.xz";
-    sha256 = "0zsy3say94d9bhaan0l6mfr59z03a5x4kngyy8b2i20n77q19skd";
+    sha256 = "13whgsj881qm1yxxz9s67lhdlz62rbqsbdhqir56xjygxzhb66vb";
   };
 
   patches = optionals stdenv.isLinux [
@@ -120,6 +121,7 @@ stdenv.mkDerivation rec {
     libsecret
     libtasn1
     libwebp
+    libmanette
     libxkbcommon
     libxml2
     libxslt
