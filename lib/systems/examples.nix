@@ -113,6 +113,10 @@ rec {
     libc = "newlib";
   };
 
+  nintendo64 = {
+    config = "mips64-elf";
+  };
+
   mmix = {
     config = "mmix-unknown-mmixware";
     libc = "newlib";
