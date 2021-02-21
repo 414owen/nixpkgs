@@ -6168,6 +6168,8 @@ in
 
   mairix = callPackage ../tools/text/mairix { };
 
+  makemask = callPackage ../development/tools/makemask { };
+
   makemkv = libsForQt5.callPackage ../applications/video/makemkv { };
 
   makerpm = callPackage ../development/tools/makerpm { };
