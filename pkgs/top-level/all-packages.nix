@@ -30369,6 +30369,8 @@ in
 
   xcpc = callPackage ../misc/emulators/xcpc { };
 
+  zutty = callPackage ../applications/terminal-emulators/zutty { };
+
   zxcvbn-c = callPackage ../development/libraries/zxcvbn-c { };
 
   zxing-cpp = callPackage ../development/libraries/zxing-cpp { };
