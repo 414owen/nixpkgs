@@ -4,14 +4,14 @@ let
   fuse = if stdenv.isDarwin then macfuse-stubs else fuse3;
 in stdenv.mkDerivation rec {
   pname = "tup";
-  version = "0.7.11";
+  version = "0.7.12alpha";
   outputs = [ "bin" "man" "out" ];
 
   src = fetchFromGitHub {
     owner = "gittup";
     repo = "tup";
-    rev = "v${version}";
-    hash = "sha256-Q2Y5ErcfhLChi9Wezn8+7eNXYX2UXW1fBOqEclmgzOo=";
+    rev = "e0e48ef68174e5078a6ad00f15ef91813f7ecc72";
+    hash = "sha256-Q2Y5E3cfhLChi9Wezn8+7eNXYX2UXW1fBOqEclmgzOo=";
   };
 
   nativeBuildInputs = [ pkg-config ];
