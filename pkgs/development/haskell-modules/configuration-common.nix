@@ -2604,6 +2604,10 @@ self: super: {
   # libfuse3 fails to mount fuse file systems within the build environment
   libfuse3 = dontCheck super.libfuse3;
 
+  # gitlab-haskell tests rely on json files not mentioned in the cabalfile
+  # possible fix here https://gitlab.com/robstewart57/gitlab-haskell/-/merge_requests/15
+  gitlab-haskell = dontCheck super.gitlab-haskell;
+
   # Tests fail due to the newly-build fourmolu not being in PATH
   # https://github.com/fourmolu/fourmolu/issues/231
   fourmolu_0_12_0_0 = dontCheck (super.fourmolu_0_12_0_0.overrideScope (lself: lsuper: {
