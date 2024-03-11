@@ -49,8 +49,8 @@ rec {
     overrides: self: super: pkgs.lib.mapAttrs (name: src:
       let isPath = x: builtins.substring 0 1 (toString x) == "/";
           generateExprs = if isPath src
-                             then self.callCabal2nix
-                             else self.callHackage;
+                             then super.callCabal2nix
+                             else super.callHackage;
       in generateExprs name src {}) overrides;
 
   /* doCoverage modifies a haskell package to enable the generation
