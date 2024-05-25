@@ -79,6 +79,7 @@ in
 ++ optional is12 ./12/lambda-ICE-PR109241.patch # backport ICE fix on ccache code
 ++ optional is13 ./13/ICE-PR110280.patch # backport ICE fix on const_unop
 ++ optional (atLeast9 && langD) ./libphobos.patch
+++ optional (atLeast12) ./haskell-demangler.patch
 
 
 
