@@ -43,8 +43,8 @@ NIX_CFLAGS_COMPILE_@suffixSalt@="-B@out@/bin/ $NIX_CFLAGS_COMPILE_@suffixSalt@"
 # Once bootstrap-tools is split into different directories we can stop
 # relying on flag ordering below.
 
-if [ -e @out@/nix-support/cc-cflags ]; then
-    NIX_CFLAGS_COMPILE_@suffixSalt@="$(< @out@/nix-support/cc-cflags) $NIX_CFLAGS_COMPILE_@suffixSalt@"
+if [ -e @binutils@/nix-support/cc-cflags ]; then
+    NIX_CFLAGS_COMPILE_@suffixSalt@="$(< @binutils@/nix-support/cc-cflags) $NIX_CFLAGS_COMPILE_@suffixSalt@"
 fi
 
 if [[ "$cInclude" = 1 ]] && [ -e @out@/nix-support/libc-cflags ]; then

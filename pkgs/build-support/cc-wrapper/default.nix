@@ -703,7 +703,7 @@ stdenvNoCC.mkDerivation {
         substituteInPlace "$flags" --replace $'\n' ' '
       done
 
-      substituteAll ${./add-flags.sh} $out/nix-support/add-flags.sh
+      substituteAll ${if targetPlatform.isDarwin then ./add-flags-darwin.sh else ./add-flags.sh} $out/nix-support/add-flags.sh
       substituteAll ${./add-hardening.sh} $out/nix-support/add-hardening.sh
       substituteAll ${../wrapper-common/utils.bash} $out/nix-support/utils.bash
     ''
