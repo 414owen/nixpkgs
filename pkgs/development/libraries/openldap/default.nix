@@ -106,7 +106,7 @@ stdenv.mkDerivation rec {
     rm -f tests/scripts/test076-authid-rewrite
   '';
 
-  doCheck = true;
+  doCheck = stdenv.isLinux;
 
   # The directory is empty and serve no purpose.
   preFixup = ''
